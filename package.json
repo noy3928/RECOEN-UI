@@ -5,6 +5,7 @@
   "author": "Yechan Noh",
   "license": "ISC",
   "scripts": {
+    "test": "echo \"No test specified\"",
     "rollup": "rollup -c",
     "np": "np"
   },
