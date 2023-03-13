@@ -1,7 +1,12 @@
 /// <reference types="react" />
 interface ButtonProps {
-    label: string;
+    text: string;
 }
 declare const Button: (props: ButtonProps) => JSX.Element;
 
-export { Button };
+interface Props {
+    text: string;
+}
+declare const Card: (props: Props) => JSX.Element;
+
+export { Button, Card };

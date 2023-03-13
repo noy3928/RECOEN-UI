@@ -2809,8 +2809,12 @@ function requireReact_development () {
 var React = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
 
 var Button = function (props) {
-    return React.createElement("button", null, props.label);
+    return React.createElement("button", null, props.text);
 };
 
-export { Button };
+var Card = function (props) {
+    return React.createElement("div", null, props.text);
+};
+
+export { Button, Card };
 //# sourceMappingURL=index.js.map
