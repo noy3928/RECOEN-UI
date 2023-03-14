@@ -2808,11 +2808,11 @@ function requireReact_development () {
 
 var React = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
 
-var Button = function (props) {
+const Button = (props) => {
     return React.createElement("button", null, props.text);
 };
 
-var Card = function (props) {
+const Card = (props) => {
     return React.createElement("div", null, props.text);
 };
 
