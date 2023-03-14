@@ -2,8 +2,9 @@ import resolve from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
 import typescript from "@rollup/plugin-typescript"
 import dts from "rollup-plugin-dts"
-import alias from "@rollup/plugin-alias"
 
+import terser from "@rollup/plugin-terser"
+import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import packageJson from "./package.json" assert { type: "json" }
 
 export default [
@@ -23,11 +24,10 @@ export default [
     ],
     plugins: [
       resolve(),
+      peerDepsExternal(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      alias({
-        entries: [{ find: "exports", replacement: "module.exports" }],
-      }),
+      terser(),
     ],
   },
   {
