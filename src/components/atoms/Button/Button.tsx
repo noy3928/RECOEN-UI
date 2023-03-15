@@ -2,18 +2,19 @@
 /** @jsx jsx */
 import React from "react"
 import { jsx, css } from "@emotion/react"
+import styled from "@emotion/styled"
 
 export interface ButtonProps {
   text: string
 }
 
 const Button = (props: ButtonProps) => {
-  return <button css={style}>{props.text}</button>
+  return <StyledButton>{props.text}</StyledButton>
 }
 
 export default Button
 
-const style = css`
+const StyledButton = styled.button`
   padding: 32px;
   background-color: hotpink;
   font-size: 24px;
