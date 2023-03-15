@@ -1,6 +1,6 @@
 {
   "name": "recoen-ui",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "다양한 컴포넌트를 미리 만들어놓고 재사용할 수 있는 컴포넌트 라이브러리",
   "author": "Yechan Noh",
   "license": "ISC",
