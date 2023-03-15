@@ -1,8 +1,10 @@
 /// <reference types="react" />
+import { jsx } from '@emotion/react';
+
 interface ButtonProps {
     text: string;
 }
-declare const Button: (props: ButtonProps) => JSX.Element;
+declare const Button: (props: ButtonProps) => jsx.JSX.Element;
 
 interface Props {
     text: string;
