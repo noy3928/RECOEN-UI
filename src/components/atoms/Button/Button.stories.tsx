@@ -1,23 +1,41 @@
 import React from "react"
-import { ComponentStory, ComponentMeta } from "@storybook/react"
 import Button from "./Button"
+import { ComponentStory, ComponentMeta } from "@storybook/react"
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "ReactComponentLibrary/Button",
+  title: "Button",
   component: Button,
+  argTypes: {
+    children: {
+      description: "자식 텍스트",
+      control: { type: "text" },
+    },
+    width: {
+      description: "너비",
+      control: { type: "number" },
+    },
+  },
 } as ComponentMeta<typeof Button>
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+//👇 We create a “template” of how args map to rendering
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
-export const HelloWorld = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-HelloWorld.args = {
-  text: "Hello world!",
-}
+export const Primary = Template.bind({})
+Primary.args = { children: "Button", theme: "primary" }
 
-export const ClickMe = Template.bind({})
-ClickMe.args = {
-  text: "Click me!",
-}
+export const Secondary = Template.bind({})
+Secondary.args = { children: "Secondary", theme: "secondary" }
+
+export const Tertiary = Template.bind({})
+Tertiary.args = { children: "Tertiary", theme: "tertiary" }
+
+export const CustomizedSize: ComponentStory<typeof Button> = args => (
+  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <Button {...args} width="10em">
+      10em size
+    </Button>
+    <Button {...args} width="100%">
+      Full size
+    </Button>
+  </div>
+)
