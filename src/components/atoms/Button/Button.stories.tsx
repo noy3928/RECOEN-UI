@@ -1,91 +1,20 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
+import React from "react"
 import Button from "./Button"
-import { jsx, css } from "@emotion/react"
-import { action } from "@storybook/addon-actions"
+import { ComponentStory, ComponentMeta } from "@storybook/react"
 
 export default {
-  title: "components|Button",
+  title: "Button",
   component: Button,
-}
+} as ComponentMeta<typeof Button>
 
-export const button = () => {
-  return <Button onClick={action("onClick")}>Click Me!</Button>
-}
+//👇 We create a “template” of how args map to rendering
+const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
-button.story = {
-  name: "Default",
-}
+export const Primary = Template.bind({})
+Primary.args = { children: "Button", theme: "primary" }
 
-export const primaryButton = () => {
-  return <Button>PRIMARY</Button>
-}
+export const Secondary = Template.bind({})
+Secondary.args = { children: "Secondary", theme: "secondary" }
 
-export const secondaryButton = () => {
-  return <Button theme="secondary">SECONDARY</Button>
-}
-
-export const tertiaryButton = () => {
-  return <Button theme="tertiary">TERTIARY</Button>
-}
-
-const buttonWrapper = css`
-  .description {
-    margin-bottom: 0.5rem;
-  }
-  & > div + div {
-    margin-top: 2rem;
-  }
-`
-
-export const sizes = () => {
-  return (
-    <div css={buttonWrapper}>
-      <div>
-        <div className="description">Small</div>
-        <Button size="small">BUTTON</Button>
-      </div>
-      <div>
-        <div className="description">Medium</div>
-        <Button size="medium">BUTTON</Button>
-      </div>
-      <div>
-        <div className="description">Large</div>
-        <Button size="large">BUTTON</Button>
-      </div>
-    </div>
-  )
-}
-
-export const disabled = () => {
-  return (
-    <div css={buttonWrapper}>
-      <div>
-        <Button disabled>PRIMARY</Button>
-      </div>
-      <div>
-        <Button disabled theme="secondary">
-          SECONDARY
-        </Button>
-      </div>
-      <div>
-        <Button disabled theme="tertiary">
-          TERTIARY
-        </Button>
-      </div>
-    </div>
-  )
-}
-
-export const customSized = () => {
-  return (
-    <div css={buttonWrapper}>
-      <div>
-        <Button width="20rem">CUSTOM WIDTH</Button>
-      </div>
-      <div>
-        <Button width="100%">FULL WIDTH</Button>
-      </div>
-    </div>
-  )
-}
+export const Tertiary = Template.bind({})
+Tertiary.args = { children: "Tertiary", theme: "tertiary" }
