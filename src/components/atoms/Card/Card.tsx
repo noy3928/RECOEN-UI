@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react"
-import { useRef } from "react"
+import React from "react"
 
 type Article = {
   title: string

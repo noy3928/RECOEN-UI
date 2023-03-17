@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import { jsx } from '@emotion/react';
+import React$1 from 'react';
 
 /** @jsxRuntime classic */
 
@@ -32,7 +33,7 @@ type Article = {
     title: string;
     description: string;
     createdAt: string;
-    image?: React.ReactNode;
+    image?: React$1.ReactNode;
 };
 interface Props {
     /** 카드의 너비를 임의로 설정합니다. */
