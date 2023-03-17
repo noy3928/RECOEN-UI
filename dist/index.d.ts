@@ -40,9 +40,10 @@ interface Props {
     width?: string | number;
     /** 카드에 들어갈 값들을 설정합니다. */
     article: Article;
+    onClick?: () => void;
 }
 declare const Card: {
-    ({ article, width }: Props): jsx.JSX.Element;
+    ({ article, width, onClick }: Props): jsx.JSX.Element;
     defaultProps: {
         article: {
             title: string;
@@ -76,4 +77,6 @@ declare const ButtonGroup: {
     };
 };
 
-export { Button, ButtonGroup, Card };
+declare const TestButton: () => JSX.Element;
+
+export { Button, ButtonGroup, Card, TestButton };
