@@ -19,14 +19,14 @@ export interface Props {
 
 const Card = ({ article, width }: Props) => {
   return (
-    <div css={[cardStyle, { width }]}>
+    <div css={[S.card, { width }]}>
       {article.image ? article.image : null}
-      <div css={wrapperStyle}>
+      <div css={S.wrapper}>
         <div>
-          <h2 css={titleStyle}>{article.title}</h2>
-          <p css={descStyle(article)}>{article.description}</p>
+          <h2 css={S.title}>{article.title}</h2>
+          <p css={S.desc(article)}>{article.description}</p>
         </div>
-        <time css={timeStyle}>{article.createdAt}</time>
+        <time css={S.time}>{article.createdAt}</time>
       </div>
     </div>
   )
@@ -43,73 +43,125 @@ Card.defaultProps = {
 
 export default Card
 
-const cardStyle = css`
-  position: relative;
-  width: 350px;
-  height: 380px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  margin: 0;
+const S = {
+  card: css`
+    position: relative;
+    width: 350px;
+    height: 380px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; // 새로 추가한 코드
+    cursor: pointer;
+    margin: 0;
 
-  transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
 
-  &:hover {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  }
+    &:hover {
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
 
-  @media screen and (max-width: 768px) {
-    width: 315px;
-  }
-`
+    @media screen and (max-width: 768px) {
+      width: 315px;
+    }
+  `,
+  wrapper: css`
+    flex-grow: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+  `,
+  title: css`
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #f3f3f3;
+    width: 100%;
 
-const wrapperStyle = css`
-  box-sizing: border-box;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
-`
+    @media screen and (max-width: 768px) {
+      width: 315px;
+    }
+  `,
+  desc: (article: Article) => css`
+    font-weight: 200;
+    font-size: 0.9rem;
+    color: #9599a0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: ${article.image ? "3" : null};
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
 
-const titleStyle = css`
-  font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #f3f3f3;
-  width: 100%;
+    @media screen and (max-width: 768px) {
+      width: 315px;
+    }
+  `,
+  time: css`
+    font-weight: 200;
+    font-size: 0.9rem;
+    color: #9599a0;
+  `,
+}
 
-  @media screen and (max-width: 768px) {
-    width: 315px;
-  }
-`
+// const cardStyle = css`
+//   position: relative;
+//   width: 350px;
+//   height: 380px;
+//   box-sizing: border-box;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: stretch; // 새로 추가한 코드
+//   cursor: pointer;
+//   margin: 0;
 
-const descStyle = (article: Article) => css`
-  font-weight: 200;
-  font-size: 0.9rem;
-  color: #9599a0;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: ${article.image ? "3" : null};
-  -webkit-box-orient: vertical;
-  line-height: 1.4;
-  letter-spacing: 0.3px;
+//   transition: box-shadow 0.3s ease-in-out;
 
-  @media screen and (max-width: 768px) {
-    width: 315px;
-  }
-`
+//   &:hover {
+//     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+//   }
 
-// const descStyle = css`
+//   @media screen and (max-width: 768px) {
+//     width: 315px;
+//   }
+// `
+
+// const wrapperStyle = css`
+//   box-sizing: border-box;
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: stretch;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   padding: 10px;
+// `
+
+// const titleStyle = css`
+//   font-size: 1rem;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   color: #f3f3f3;
+//   width: 100%;
+
+//   @media screen and (max-width: 768px) {
+//     width: 315px;
+//   }
+// `
+
+// const descStyle = (article: Article) => css`
 //   font-weight: 200;
 //   font-size: 0.9rem;
 //   color: #9599a0;
 //   overflow: hidden;
-//   text-overflow: ellipsis;
 //   display: -webkit-box;
-//   -webkit-line-clamp: 3;
+//   -webkit-line-clamp: ${article.image ? "3" : null};
 //   -webkit-box-orient: vertical;
 //   line-height: 1.4;
 //   letter-spacing: 0.3px;
@@ -119,8 +171,9 @@ const descStyle = (article: Article) => css`
 //   }
 // `
 
-const timeStyle = css`
-  font-weight: 200;
-  font-size: 0.9rem;
-  color: #9599a0;
-`
+// const timeStyle = css`
+//   flex-grow: 1;
+//   font-weight: 200;
+//   font-size: 0.9rem;
+//   color: #9599a0;
+// `
