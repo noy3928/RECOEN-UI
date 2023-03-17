@@ -2,7 +2,6 @@ import resolve from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
 import typescript from "@rollup/plugin-typescript"
 import dts from "rollup-plugin-dts"
-import babel from "@rollup/plugin-babel"
 
 import terser from "@rollup/plugin-terser"
 import peerDepsExternal from "rollup-plugin-peer-deps-external"
@@ -29,11 +28,6 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       terser(),
-      babel({
-        babelHelpers: "bundled",
-        configFile: "./babel.config.js",
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-      }),
     ],
   },
   {

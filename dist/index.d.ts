@@ -77,6 +77,4 @@ declare const ButtonGroup: {
     };
 };
 
-declare const TestButton: () => JSX.Element;
-
-export { Button, ButtonGroup, Card, TestButton };
+export { Button, ButtonGroup, Card };
