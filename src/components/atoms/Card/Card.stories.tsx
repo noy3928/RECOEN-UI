@@ -34,7 +34,8 @@ export const ManyCards: ComponentStory<typeof Card> = args => (
     <Card
       {...args}
       article={{
-        title: "내가 만든 라이브러리 Npm에 배포하기",
+        title:
+          "내가 만든 라이브러리 Npm에 배포하기내가 만든 라이브러리 Npm에 배포하기",
         description:
           "라이브러리를 npm에 배포하는 과정에 대해서 알아보겠습니다.",
         createdAt: "2021-01-01",
